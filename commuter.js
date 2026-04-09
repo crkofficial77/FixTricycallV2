@@ -16,6 +16,7 @@ const driverIcon = L.icon({
   iconSize: [40, 40],
   iconAnchor: [20, 40]
 });
+
 // MAP
 function initMap(lat, lng) {
   map = L.map("map").setView([lat, lng], 16);
@@ -74,35 +75,7 @@ function requestTricycle() {
 
   currentRequestId = ref.key;
 
-  listenForAcceptance(); // 🔔 listen
-
   alert("Request sent!");
-}
-
-// LISTEN FOR DRIVER ACCEPT
-function listenForAcceptance() {
-  firebase.database().ref("requests/" + currentRequestId)
-    .on("value", snap => {
-      if (!snap.exists()) return;
-
-      const data = snap.val();
-
-      if (data.status === "accepted") {
-        showDriverNotification(data);
-      }
-    });
-}
-
-// SHOW NOTIFICATION
-function showDriverNotification(data) {
-  const box = document.getElementById("notification");
-
-  box.style.display = "block";
-  box.innerHTML = `
-    🚖 <b>Driver Found!</b><br>
-    Name: ${data.driverName}<br>
-    Plate: ${data.plateNumber}
-  `;
 }
 
 // CANCEL
@@ -110,8 +83,5 @@ function cancelRequest() {
   if (!currentRequestId) return;
 
   firebase.database().ref("requests/" + currentRequestId).remove();
-
-  document.getElementById("notification").style.display = "none";
-
   alert("Cancelled");
 }
