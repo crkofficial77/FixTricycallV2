@@ -8,19 +8,18 @@ let DRIVER_ID = null;
 
 // ================= ICONS =================
 
-
-// TRICYCLE ICON (FIXED)
-const driverIcon = L.icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/2972/2972185.png",
-  iconSize: [40, 40],
-  iconAnchor: [20, 40]
-});
-
-// PASSENGER PICKUP ICON
-const pickupIcon = L.icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
+// ICONS
+const commuterIcon = L.icon({
+  iconUrl: "https://cdn-icons-png.flaticon.com/512/1946/1946429.png",
   iconSize: [35, 35],
   iconAnchor: [17, 35]
+});
+
+// TRICYCLE / TUKTUK ICON
+const driverIcon = L.icon({
+  iconUrl: "https://cdn-icons-png.flaticon.com/512/2554/2554936.png",
+  iconSize: [40, 40],
+  iconAnchor: [20, 40]
 });
 
 // ================= INIT MAP =================
@@ -104,9 +103,12 @@ function acceptRequest(id, req) {
   const user = firebase.auth().currentUser;
   if (!user) return;
 
+  // 🔥 SEND DRIVER INFO TO COMMUTER
   firebase.database().ref("requests/" + id).update({
     status: "accepted",
-    driverUid: user.uid
+    driverUid: user.uid,
+    driverName: user.email || "Driver",
+    plateNumber: "ABC-123" // 👉 change this if you store real plate
   });
 
   currentRequestId = id;
