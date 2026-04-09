@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone {
+  width: 360px;
+  background: #0b061f;
+  padding: 25px;
+  border-radius: 28px;
+  color: white;
+  box-shadow: 0 0 35px rgba(176,132,255,0.4);
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  text-align: center;
+  color: #b084ff;
+  margin-bottom: 20px;
+}
+
+/* ROLE BUTTONS */
+.role-select {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.role-select button {
+  width: 48%;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid #6a0dad;
+  background: transparent;
+  color: #b084ff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.role-select button:hover {
+  background: #6a0dad;
+  color: white;
+}
+
+/* ROLE TEXT */
+#roleText {
+  text-align: center;
+  font-size: 13px;
+  margin-bottom: 15px;
+  opacity: 0.85;
+}
+
+/* INPUTS */
+input {
+  width: 100%;
+  padding: 13px;
+  margin-top: 10px;
+  border-radius: 14px;
+  border: none;
+  outline: none;
+  background: #1e1433;
+  color: white;
+  font-size: 14px;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+/* UPLOAD ID */
+.upload {
+  margin-top: 15px;
+  padding: 14px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #6a0dad, #b084ff);
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.upload:hover {
+  opacity: 0.9;
+}
+
+.upload input {
+  display: none;
+}
+
+/* BUTTON */
+.login-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #b084ff, #6a0dad);
+  border: none;
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  transform: scale(1.03);
+}
+
+/* LINK TEXT */
+.switch-text {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.switch-text a {
+  color: #b084ff;
+  text-decoration: none;
+  font-weight: bold;
+}

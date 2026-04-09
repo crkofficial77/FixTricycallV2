@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Commuter Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="firebase.js"></script>
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <style>
+    body { background:#220358; font-family:Arial; }
+    .phone {
+      width:320px; margin:60px auto; padding:20px;
+      background:#0b0620; border-radius:25px;
+      box-shadow:0 0 30px rgba(140,90,255,0.6);
+      text-align:center; color:white;
+    }
+    button {
+      width:90%; padding:12px;
+      border:none; border-radius:12px;
+      font-size:16px; font-weight:bold;
+      margin-top:10px; cursor:pointer;
+    }
+    .request { background:#7b2cff; color:white; }
+    .cancel { background:#ff4d4d; color:white; }
+  </style>
+</head>
+
+<body>
+<div class="phone">
+  <h2>
+    <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" width="20">
+    Commuter
+  </h2>
+
+  <div id="map" style="height:300px; border-radius:15px;"></div>
+
+  <button class="request" onclick="requestTricycle()">Request</button>
+  <button class="cancel" onclick="cancelRequest()">Cancel</button>
+</div>
+
+<script src="commuter.js"></script>
+</body>
+</html>
