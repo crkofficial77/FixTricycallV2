@@ -10,9 +10,8 @@ const commuterIcon = L.icon({
   iconAnchor: [17, 35]
 });
 
-// TRICYCLE / TUKTUK ICON
 const driverIcon = L.icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/2554/2554936.png",
+  iconUrl: "https://cdn-icons-png.flaticon.com/512/2972/2972185.png",
   iconSize: [40, 40],
   iconAnchor: [20, 40]
 });
@@ -75,7 +74,35 @@ function requestTricycle() {
 
   currentRequestId = ref.key;
 
+  listenForAcceptance(); // 🔔 listen
+
   alert("Request sent!");
+}
+
+// LISTEN FOR DRIVER ACCEPT
+function listenForAcceptance() {
+  firebase.database().ref("requests/" + currentRequestId)
+    .on("value", snap => {
+      if (!snap.exists()) return;
+
+      const data = snap.val();
+
+      if (data.status === "accepted") {
+        showDriverNotification(data);
+      }
+    });
+}
+
+// SHOW NOTIFICATION
+function showDriverNotification(data) {
+  const box = document.getElementById("notification");
+
+  box.style.display = "block";
+  box.innerHTML = `
+    🚖 <b>Driver Found!</b><br>
+    Name: ${data.driverName}<br>
+    Plate: ${data.plateNumber}
+  `;
 }
 
 // CANCEL
@@ -83,5 +110,8 @@ function cancelRequest() {
   if (!currentRequestId) return;
 
   firebase.database().ref("requests/" + currentRequestId).remove();
+
+  document.getElementById("notification").style.display = "none";
+
   alert("Cancelled");
 }
