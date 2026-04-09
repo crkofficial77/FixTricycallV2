@@ -8,6 +8,7 @@ let DRIVER_ID = null;
 
 // ================= ICONS =================
 
+
 // ICONS
 const commuterIcon = L.icon({
   iconUrl: "https://cdn-icons-png.flaticon.com/512/1946/1946429.png",
@@ -103,12 +104,9 @@ function acceptRequest(id, req) {
   const user = firebase.auth().currentUser;
   if (!user) return;
 
-  // 🔥 SEND DRIVER INFO TO COMMUTER
   firebase.database().ref("requests/" + id).update({
     status: "accepted",
-    driverUid: user.uid,
-    driverName: user.email || "Driver",
-    plateNumber: "ABC-123" // 👉 change this if you store real plate
+    driverUid: user.uid
   });
 
   currentRequestId = id;
