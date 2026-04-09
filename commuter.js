@@ -10,12 +10,12 @@ const commuterIcon = L.icon({
   iconAnchor: [17, 35]
 });
 
+// TRICYCLE / TUKTUK ICON
 const driverIcon = L.icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/2972/2972185.png",
+  iconUrl: "https://cdn-icons-png.flaticon.com/512/2554/2554936.png",
   iconSize: [40, 40],
   iconAnchor: [20, 40]
 });
-
 // MAP
 function initMap(lat, lng) {
   map = L.map("map").setView([lat, lng], 16);
