@@ -31,17 +31,24 @@
     }
     .request { background:#7b2cff; color:white; }
     .cancel { background:#ff4d4d; color:white; }
+
+    #notification {
+      display:none;
+      background:#7b2cff;
+      padding:10px;
+      border-radius:10px;
+      margin-top:10px;
+    }
   </style>
 </head>
 
 <body>
 <div class="phone">
-  <h2>
-    <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" width="20">
-    Commuter
-  </h2>
+  <h2>🚶 Commuter</h2>
 
   <div id="map" style="height:300px; border-radius:15px;"></div>
+
+  <div id="notification"></div>
 
   <button class="request" onclick="requestTricycle()">Request</button>
   <button class="cancel" onclick="cancelRequest()">Cancel</button>
