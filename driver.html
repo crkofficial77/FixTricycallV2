@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Driver Page</title>
+  <title>Commuter Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Firebase -->
@@ -23,27 +23,37 @@
       box-shadow:0 0 30px rgba(140,90,255,0.6);
       text-align:center; color:white;
     }
-    .driver-button {
-      width:90%; padding:12px; margin:8px auto;
-      display:block; border-radius:12px;
-      border:none; font-size:16px; font-weight:bold;
-      background:linear-gradient(135deg,#7b2cff,#b56bff);
-      color:white; cursor:pointer;
+    button {
+      width:90%; padding:12px;
+      border:none; border-radius:12px;
+      font-size:16px; font-weight:bold;
+      margin-top:10px; cursor:pointer;
+    }
+    .request { background:#7b2cff; color:white; }
+    .cancel { background:#ff4d4d; color:white; }
+
+    #notification {
+      display:none;
+      background:#7b2cff;
+      padding:10px;
+      border-radius:10px;
+      margin-top:10px;
     }
   </style>
 </head>
 
 <body>
 <div class="phone">
-  <h2>
-    <img src="https://cdn-icons-png.flaticon.com/512/2554/2554936.png" width="22">
-    Tricycle Driver
-  </h2>
+  <h2>🚶 Commuter</h2>
 
-  <div id="requests"></div>
   <div id="map" style="height:300px; border-radius:15px;"></div>
+
+  <div id="notification"></div>
+
+  <button class="request" onclick="requestTricycle()">Request</button>
+  <button class="cancel" onclick="cancelRequest()">Cancel</button>
 </div>
 
-<script src="driver.js"></script>
+<script src="commuter.js"></script>
 </body>
 </html>
